@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
 
     <properties>
+        <java.version>19</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -69,10 +70,12 @@
                         <compilerArgs>
                             <arg>-Werror</arg>
                             <arg>-Xlint:all</arg>
-                            <failOnError>true</failOnError>
-                            <failOnWarning>true</failOnWarning>
-                            <showDeprecation>true</showDeprecation>
                         </compilerArgs>
+                        <failOnError>true</failOnError>
+                        <failOnWarning>true</failOnWarning>
+                        <showDeprecation>true</showDeprecation>
+                        <executable>/home/andry/.jdks/openjdk-19.0.1/bin/javac</executable>
+                        <release>19</release>
                     </configuration>
                 </plugin>
                 <plugin>
