@@ -19,6 +19,24 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- project dependencies -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>tutorialapi-rest</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.4.5</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-bom -->
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
@@ -35,12 +53,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+            <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.inject/jersey-hk2 -->
             <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>1.4.5</version>
+                <groupId>org.glassfish.jersey.inject</groupId>
+                <artifactId>jersey-hk2</artifactId>
+                <version>3.1.1</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
             <dependency>
@@ -97,6 +114,7 @@
                         <ignoredUnusedDeclaredDependencies>
                             <ignoredUnusedDeclaredDependency>ch.qos.logback:logback-classic</ignoredUnusedDeclaredDependency>
                             <ignoredUnusedDeclaredDependency>org.eclipse.jetty:jetty-annotations</ignoredUnusedDeclaredDependency>
+                            <ignoredUnusedDeclaredDependency>org.glassfish.jersey.inject:jersey-hk2</ignoredUnusedDeclaredDependency>
                         </ignoredUnusedDeclaredDependencies>
                     </configuration>
                     <executions>

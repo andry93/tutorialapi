@@ -1,6 +1,7 @@
 package com.tutorialapi.server;
 
 
+import com.tutorialapi.rest.ApiApplication;
 import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -54,7 +55,7 @@ public class TutorialApiServer {
         server.setHandler(servletContextHandler);
 
         ServletHolder apiServletHolder = servletContextHandler.addServlet(ServletContainer.class,"/api/*");
-        apiServletHolder.setInitParameter("jakarta.ws.rs.Application","TODO");
+        apiServletHolder.setInitParameter("jakarta.ws.rs.Application", ApiApplication.class.getName());
 
         LOGGER.info("server starting");
         server.start();
