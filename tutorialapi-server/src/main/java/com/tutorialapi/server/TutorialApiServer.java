@@ -12,6 +12,8 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
+
 import static org.eclipse.jetty.http.HttpScheme.HTTPS;
 import static org.eclipse.jetty.http.HttpVersion.HTTP_1_1;
 import static org.eclipse.jetty.servlet.ServletContextHandler.NO_SESSIONS;
@@ -19,11 +21,11 @@ import static org.eclipse.jetty.servlet.ServletContextHandler.NO_SESSIONS;
 public class TutorialApiServer {
     public static final Logger LOGGER = LoggerFactory.getLogger(TutorialApiServer.class);
     public static void main(String[] args) throws Exception{
-
+        int port = Optional.ofNullable(System.getProperty("port")).map(Integer::parseInt).orElse(8443);
 
         HttpConfiguration httpsConfiguration = new HttpConfiguration();
         httpsConfiguration.setSecureScheme(HTTPS.asString());
-        httpsConfiguration.setSecurePort(8443);
+        httpsConfiguration.setSecurePort(port);
         httpsConfiguration.addCustomizer(new SecureRequestCustomizer());
         httpsConfiguration.setSendServerVersion(false); //disable the server info in header
         httpsConfiguration.setSendXPoweredBy(false);//disable the PoweredBy info in header
@@ -57,7 +59,7 @@ public class TutorialApiServer {
         ServletHolder apiServletHolder = servletContextHandler.addServlet(ServletContainer.class,"/api/*");
         apiServletHolder.setInitParameter("jakarta.ws.rs.Application", ApiApplication.class.getName());
 
-        LOGGER.info("server starting");
+        LOGGER.info("server starting on port: {}",port);
         server.start();
         server.join();
     }
