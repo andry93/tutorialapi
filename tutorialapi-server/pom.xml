@@ -24,6 +24,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- used for loading system configuration -->
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+        </dependency>
         <!-- used for application server -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
