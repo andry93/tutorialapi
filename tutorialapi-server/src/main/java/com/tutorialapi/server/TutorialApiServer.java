@@ -13,6 +13,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.glassfish.jersey.servlet.ServletContainer;
+import org.glassfish.jersey.servlet.ServletProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +29,6 @@ public class TutorialApiServer {
     public static final Logger LOGGER = LoggerFactory.getLogger(TutorialApiServer.class);
     public static final String ROOT_CONTEXT = "/";
     public static final String API_PATTERN = "/api/*";
-    public static final String APP_INIT_PARAM = "jakarta.ws.rs.Application";
 
     private static Server createJettyServer(int port,Config config) throws IOException
     {
@@ -66,7 +66,7 @@ public class TutorialApiServer {
         server.setHandler(servletContextHandler);
 
         ServletHolder apiServletHolder = servletContextHandler.addServlet(ServletContainer.class,API_PATTERN);
-        apiServletHolder.setInitParameter(APP_INIT_PARAM, ApiApplication.class.getName());
+        apiServletHolder.setInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, ApiApplication.class.getName());
 
         return server;
     }
