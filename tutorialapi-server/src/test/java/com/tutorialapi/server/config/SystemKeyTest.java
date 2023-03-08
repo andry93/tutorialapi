@@ -13,5 +13,6 @@ public class SystemKeyTest {
     @Test
     public void testGetKey() {
         Assertions.assertEquals("port",SystemKey.PORT.getKey());
+        Assertions.assertEquals("mode",SystemKey.MODE.getKey());
     }
 }
