@@ -16,6 +16,7 @@
         <appender-ref ref="STDOUT" />
     </root>
 
+    <logger name="access-log" level="WARN"/>
     <logger name="com.tutorial" level="INFO"/>
     <logger name="org.eclipse.jetty" level="WARN"/>
 

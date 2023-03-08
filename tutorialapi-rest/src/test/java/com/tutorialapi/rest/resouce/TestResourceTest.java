@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.logging.LogManager;
 
 public class TestResourceTest extends JerseyTest {
+    //public static final Logger LOGGER = LoggerFactory.getLogger(TestResourceTest.class);
     static {
         LogManager.getLogManager().reset();
     }
@@ -20,7 +21,13 @@ public class TestResourceTest extends JerseyTest {
 
     @Test
     public void test() {
-        Response response = target("/test").request().get();
+        Response response = target("/test/subpath").request().get();
         Assertions.assertEquals(200,response.getStatus());
+        Assertions.assertEquals("Hello",response.readEntity(String.class));
+
+        Assertions.assertEquals("*",response.getHeaderString("Access-Control-Allow-Origin"));
+        Assertions.assertEquals("GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH",response.getHeaderString("Access-Control-Allow-Methods"));
+
+        //LOGGER.info("Response Header : {}",response.getHeaders());
     }
 }
